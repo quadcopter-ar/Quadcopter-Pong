@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
-    public CapsuleRight enemyPaddle;
+    public Scoreboard scoreboard;
+    public bool isPlayerOne;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +21,18 @@ public class Goal : MonoBehaviour
     
     void OnTriggerEnter(Collider other)
     {
-        enemyPaddle.score++;
+        if (other.gameObject.name != "Ball")
+        {
+            return;
+        }
+        scoreboard.scored = true;
+        if (isPlayerOne)
+        {
+            scoreboard.playerTwoScore += 1;
+        } else
+        {
+            scoreboard.playerOneScore += 1;
+        }
     }
     
 }
