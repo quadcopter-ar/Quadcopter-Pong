@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aca3b684717f4fb8bde195c50aa7a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 2
+  score: 13
   speed: 13
   left: left
   right: right
