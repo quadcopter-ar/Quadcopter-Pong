@@ -59,13 +59,12 @@ public class BallScript : MonoBehaviour
     void OnTriggerEnter(Collider collider)
     {
         
-        if(collider.gameObject.CompareTag("Reset"))
+        if(collider.gameObject.name.Substring(7) == "Goal")
         {
             //increase the score here.
             //Score = Score + 1;
             //SetScoreText();
             //set player position and velocity to start
-
             if(paddle1.score >= 10)
             {
                 winText.enabled = true;
@@ -104,11 +103,13 @@ public class BallScript : MonoBehaviour
             if(keyboardDebug)
             {
                 //Debug.Log("Keyboard button is pressed.");
-                if (Input.GetKey(startBall))
+                if (Input.GetKeyUp(startBall))
                 {
                     int velX = Random.Range(1,3) == 1 ? Random.Range(-4,-7) : Random.Range(4, 7);
                     int velZ = Random.Range(1,3) == 1 ? Random.Range(-4,-7) : Random.Range(4, 7);
                     int velY = Random.Range(1,3) == 1 ? Random.Range(-4,-7) : Random.Range(4, 7);
+
+                    Debug.Log($"Shooting at {velX} {velY} {velZ}");
 
                     rb.velocity = new Vector3(velX, velY, velZ);
                     transform.position = new Vector3(0,0,0);
