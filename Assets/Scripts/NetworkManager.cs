@@ -43,26 +43,34 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         Debug.Log("Creating Player");
         if(PhotonNetwork.IsMasterClient)
         {
-            PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Paddle1"), new Vector3(0,2,-19),Quaternion.Euler(0,0,90));
-            GameObject paddle = GameObject.Find("Paddle1(Clone)");
+            PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Paddle1"), new Vector3(0,0,0),Quaternion.Euler(0,0,0));
+            GameObject emptyPaddle = GameObject.Find("Paddle1(Clone)");
+            GameObject paddle = GameObject.Find("Paddle");
             GameObject rig = GameObject.Find("XR Rig");
-            Vector3 temp = new Vector3(-18.7f,-0.28f,1.08f);
+            //Vector3 temp = new Vector3(-18.7f,-0.28f,1.08f);
+            Vector3 temp = new Vector3(0.6f, -1.27f, 0.22f);
             //Vector3 temp = new Vector3(0f,0f,1.08f);
-            rig.transform.parent = paddle.transform;
+            rig.transform.parent = emptyPaddle.transform;
+            paddle.transform.parent = emptyPaddle.transform;
             GameObject rigOffset = GameObject.Find("Camera Offset");
             rigOffset.transform.localPosition = temp;
+
+            GameObject drone_sys = GameObject.Find("DroneSystem");
+            drone_sys.GetComponent<DroneConnection>().droneObject = emptyPaddle;
         }
         else
         {
-            PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Paddle2"), new Vector3(0,2,19), Quaternion.Euler(0,0,-90));
-            GameObject paddle = GameObject.Find("Paddle2(Clone)");
+            PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Paddle2"), new Vector3(0,2,19), Quaternion.Euler(0,0,0));
+            GameObject emptyPaddle = GameObject.Find("Paddle2(Clone)");
+            GameObject paddle = GameObject.Find("Paddle");
             GameObject rig = GameObject.Find("XR Rig");
             Vector3 temp = new Vector3(18.7f,-0.28f,-1.08f);
             //Vector3 temp = new Vector3(0f,0f,1.08f);
-            rig.transform.parent = paddle.transform;
+            rig.transform.parent = emptyPaddle.transform;
+            paddle.transform.parent = emptyPaddle.transform;
             GameObject rigOffset = GameObject.Find("Camera Offset");
             rigOffset.transform.localPosition = temp;
-            rigOffset.transform.rotation = Quaternion.Euler(0,180,0);
+            //rigOffset.transform.rotation = Quaternion.Euler(0,180,0);
         } 
     }
 
@@ -70,5 +78,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     {
         Debug.Log("A new player joined the room");
         base.OnPlayerEnteredRoom(newPlayer);
+    }
+
+    void Update()
+    {
+        GameObject paddle = GameObject.Find("Paddle");
+        paddle.transform.localPosition = Vector3.zero;
     }
 }
