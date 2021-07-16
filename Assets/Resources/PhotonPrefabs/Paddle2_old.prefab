@@ -112,14 +112,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aca3b684717f4fb8bde195c50aa7a06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
+  score: 8
   speed: 13
   left: left
   right: right
   up: down
   down: up
   controllerNode: 5
-  keyboardDebug: 0
+  keyboardDebug: 1
 --- !u!54 &6052239006454973694
 Rigidbody:
   m_ObjectHideFlags: 0

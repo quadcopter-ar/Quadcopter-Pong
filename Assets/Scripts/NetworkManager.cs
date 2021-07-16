@@ -60,17 +60,22 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         }
         else
         {
-            PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Paddle2"), new Vector3(0,2,19), Quaternion.Euler(0,0,0));
+            PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Paddle2"), new Vector3(0,2,19), Quaternion.Euler(0, 0, 0));
             GameObject emptyPaddle = GameObject.Find("Paddle2(Clone)");
-            GameObject paddle = GameObject.Find("Paddle");
+            GameObject paddle = GameObject.Find("Paddle2nd");
             GameObject rig = GameObject.Find("XR Rig");
-            Vector3 temp = new Vector3(18.7f,-0.28f,-1.08f);
+            Vector3 temp = new Vector3(0f,0f,0f);
             //Vector3 temp = new Vector3(0f,0f,1.08f);
             rig.transform.parent = emptyPaddle.transform;
+            rig.transform.localPosition = temp;
+            rig.transform.rotation = Quaternion.Euler(0, 0, 0);
             paddle.transform.parent = emptyPaddle.transform;
             GameObject rigOffset = GameObject.Find("Camera Offset");
             rigOffset.transform.localPosition = temp;
-            //rigOffset.transform.rotation = Quaternion.Euler(0,180,0);
+            rigOffset.transform.rotation = Quaternion.Euler(0,0,0);
+
+            GameObject drone_sys = GameObject.Find("DroneSystem");
+            drone_sys.GetComponent<DroneConnection>().droneObject = emptyPaddle;
         } 
     }
 

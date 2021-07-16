@@ -658,7 +658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aca052897511404fb4b732c20628ee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  remoteIP: 10.1.1.148
+  remoteIP: 10.1.1.197
   isSimulation: 0
   droneObject: {fileID: 0}
   takeoffLandButton: {fileID: 1796738211}
@@ -2929,7 +2929,7 @@ PrefabInstance:
     - target: {fileID: 822994485471152172, guid: 8fa9c66eac64547ae98bad21d1fe9126,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 2.65
       objectReference: {fileID: 0}
     - target: {fileID: 822994485471152172, guid: 8fa9c66eac64547ae98bad21d1fe9126,
         type: 3}
@@ -2986,7 +2986,7 @@ PrefabInstance:
     - target: {fileID: 822994485471152174, guid: 8fa9c66eac64547ae98bad21d1fe9126,
         type: 3}
       propertyPath: keyboardDebug
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 822994485471152171, guid: 8fa9c66eac64547ae98bad21d1fe9126, type: 3}

@@ -85,11 +85,11 @@ public class DroneConnection : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		droneObject.transform.position = current_position + new Vector3(0, 2, -19);
+		droneObject.transform.position = current_position + new Vector3(0, 0, -2);
 		droneObject.transform.eulerAngles = current_orientation;
 
-		// Reset
-		UpdateTarget();
+        // Reset
+        UpdateTarget();
 
 
 	}
@@ -264,6 +264,7 @@ public class DroneConnection : MonoBehaviour
 							current_orientation.x = -p.pitch * 180f / Mathf.PI;
 							current_orientation.y = p.yaw * 180f / Mathf.PI;
 							current_orientation.z = p.roll * 180f / Mathf.PI;
+                            print(p.x);
 						}
 						catch (Exception e)
 						{

@@ -155,19 +155,19 @@ public class CapsuleRight : MonoBehaviour
         {
             //Debug.Log("Keyboard mode");
             //Debug.Log(down);
-            if (Input.GetKey(left))
+            if (Input.GetKey(down))
             {
                 transform.Translate(new Vector3(0,speed * Time.deltaTime,0), Space.Self);
             }
-            else if (Input.GetKey(right))
+            else if (Input.GetKey(up))
             {
                 transform.Translate(new Vector3(0,-speed * Time.deltaTime,0), Space.Self);
             }
-            else if (Input.GetKey(up))
+            else if (Input.GetKey(left))
             {
                 transform.Translate(new Vector3(speed * Time.deltaTime,0,0),Space.Self);
             }
-            else if (Input.GetKey(down))
+            else if (Input.GetKey(right))
             {
                 transform.Translate(new Vector3(-speed * Time.deltaTime,0,0),Space.Self);
             }
