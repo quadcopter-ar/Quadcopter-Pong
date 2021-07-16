@@ -85,8 +85,8 @@ public class DroneConnection : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		droneObject.transform.position = current_position + new Vector3(0, 2, -19);
-		droneObject.transform.eulerAngles = current_orientation;
+		droneObject.transform.position = current_position + new Vector3(0, 0, 2);
+		droneObject.transform.eulerAngles = current_orientation + new Vector3(0, 180, 0);
 
 		// Reset
 		UpdateTarget();
@@ -107,7 +107,7 @@ public class DroneConnection : MonoBehaviour
 
 		float deadZoneAmt = 0.5f;
 
-		/*
+		
 		if (controller.TryGetFeatureValue(primary2DVector, out touchCoords) && touchCoords != Vector2.zero)
 		{
 
@@ -125,7 +125,7 @@ public class DroneConnection : MonoBehaviour
 			}
 		}
 
-		*/
+		
 		
 		
 
@@ -156,7 +156,7 @@ public class DroneConnection : MonoBehaviour
 		{
 			dir.y -= 0.5f;
 		}
-		/*
+		
 		if (controller.TryGetFeatureValue(primary2DVector, out touchCoords) && touchCoords != Vector2.zero)
 		{ 
 			if (touchCoords.y < -deadZoneAmt)
@@ -171,9 +171,9 @@ public class DroneConnection : MonoBehaviour
 				dir.y += 0.5f;
 			}
 
-			// print(touchCoords);
+			print(touchCoords);
 		}
-		*/
+		
 		target_position += dir;
 
 		if (Input.GetKey(KeyCode.E))

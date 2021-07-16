@@ -48,13 +48,14 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             GameObject paddle = GameObject.Find("Paddle");
             GameObject rig = GameObject.Find("XR Rig");
             //Vector3 temp = new Vector3(-18.7f,-0.28f,1.08f);
-            Vector3 temp = new Vector3(0.6f, -1.27f, 0.22f);
+            Vector3 temp = new Vector3(0.6f, 0f, 0.75f);
             //Vector3 temp = new Vector3(0f,0f,1.08f);
             rig.transform.parent = emptyPaddle.transform;
             paddle.transform.parent = emptyPaddle.transform;
             GameObject rigOffset = GameObject.Find("Camera Offset");
             rigOffset.transform.localPosition = temp;
-
+            rig.transform.rotation = Quaternion.Euler(0, 0, 0);
+            rigOffset.transform.rotation = Quaternion.Euler(0, 0, 0);
             GameObject drone_sys = GameObject.Find("DroneSystem");
             drone_sys.GetComponent<DroneConnection>().droneObject = emptyPaddle;
         }
