@@ -10,6 +10,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.XR;
 using System.Linq;
+using Photon.Pun;
 
 [Serializable]
 public class Position
@@ -70,7 +71,6 @@ public class DroneConnection : MonoBehaviour
 	private XRNode controllerNode = XRNode.RightHand;
 	private List<InputDevice> devices = new List<InputDevice>();
 	private InputDevice controller;
-
 	// Use this for initialization
 	void Start()
 	{
@@ -85,8 +85,13 @@ public class DroneConnection : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		droneObject.transform.position = current_position + new Vector3(0, 0, 2);
-		droneObject.transform.eulerAngles = current_orientation + new Vector3(0, 180, 0);
+		if(PhotonNetwork.IsMasterClient){
+			droneObject.transform.position = current_position + new Vector3(0, 0, 2);
+			droneObject.transform.eulerAngles = current_orientation + new Vector3(0, 180, 0);
+		}else{
+			droneObject.transform.position = current_position + new Vector3(0, 0, -2);
+			droneObject.transform.eulerAngles = current_orientation;
+		}
 
 		// Reset
 		UpdateTarget();
