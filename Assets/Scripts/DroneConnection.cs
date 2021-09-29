@@ -93,8 +93,8 @@ public class DroneConnection : MonoBehaviour
 			droneObject.transform.eulerAngles = current_orientation;
 		}
 
-		// Reset
-		UpdateTarget();
+        // Reset
+        UpdateTarget();
 
 
 	}
@@ -269,6 +269,7 @@ public class DroneConnection : MonoBehaviour
 							current_orientation.x = -p.pitch * 180f / Mathf.PI;
 							current_orientation.y = p.yaw * 180f / Mathf.PI;
 							current_orientation.z = p.roll * 180f / Mathf.PI;
+                            print(p.x);
 						}
 						catch (Exception e)
 						{
